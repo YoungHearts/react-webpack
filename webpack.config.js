@@ -42,6 +42,6 @@ module.exports = {
         ]},
     // 插件
     plugins: [],
-    // 是否开启 source-map
+    // 是否开启 source-map(打包真实数据)
     // devtool: 'source-map'
 }
