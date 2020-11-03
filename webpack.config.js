@@ -16,7 +16,30 @@ module.exports = {
     // 接下来为了观察打包后的文件，使用 development
     mode: 'development',
     // 模块 这些选项决定了如何处理项目中的不同类型的模块。
-    module: {},
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    },
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    },
+                ],
+            }
+        ]},
     // 插件
     plugins: [],
     // 是否开启 source-map
