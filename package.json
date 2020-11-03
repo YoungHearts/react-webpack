@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/YoungHearts/react-webpack/issues"
   },
-  "homepage": "https://github.com/YoungHearts/react-webpack#readme"
+  "homepage": "https://github.com/YoungHearts/react-webpack#readme",
+  "dependencies": {
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
+  }
 }
