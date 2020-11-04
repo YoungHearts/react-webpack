@@ -10,7 +10,7 @@ module.exports = {
     // 项目出口 
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'mian.js'
+        filename: 'mian_[hash:8].js'
     },
     // 打包环境 默认是生产环境 production
     // 如果是开发环境 这里需要换成 development
