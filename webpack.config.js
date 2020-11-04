@@ -1,5 +1,6 @@
 /**** webpack.config.js  ***/
-
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // webpack 默认配置
 const path = require('path');
 
@@ -41,7 +42,25 @@ module.exports = {
             }
         ]},
     // 插件
-    plugins: [],
+    plugins: [
+        // 复制一个 html 并将最后打包好的资源在 html 中引入
+        new htmlWebpackPlugin({
+            // 页面title 需要搭配 ejs 使用
+            title: "测试title",
+            // html 模板路径
+            template: "./index.html",
+            // 输出文件名称
+            filename: "index.html",
+            minify: {
+                // 压缩HTML⽂件
+                removeComments: true, // 移除HTML中的注释
+                collapseWhitespace: true, // 删除空⽩符与换⾏符
+                minifyCSS: true // 压缩内联css
+            }
+        }),
+        // 每次部署时清空 dist 目录
+        new CleanWebpackPlugin()
+    ],
     // 是否开启 source-map(打包真实数据)
     // devtool: 'source-map'
 }
