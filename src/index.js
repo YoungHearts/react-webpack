@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-
+// import "@babel/polyfill";
 class App extends Component {
     
     render() {

@@ -39,10 +39,19 @@ module.exports = {
                         options: {},
                     },
                 ],
-            }
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: "babel-loader"
+                }
+              }
         ]},
     // 插件
     plugins: [
+        // 每次部署时清空 dist 目录
+        new CleanWebpackPlugin(),
         // 复制一个 html 并将最后打包好的资源在 html 中引入
         new htmlWebpackPlugin({
             // 页面title 需要搭配 ejs 使用
@@ -57,9 +66,7 @@ module.exports = {
                 collapseWhitespace: true, // 删除空⽩符与换⾏符
                 minifyCSS: true // 压缩内联css
             }
-        }),
-        // 每次部署时清空 dist 目录
-        new CleanWebpackPlugin()
+        })
     ],
     // 是否开启 source-map(打包真实数据)
     // devtool: 'source-map'
