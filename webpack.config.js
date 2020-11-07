@@ -1,10 +1,27 @@
 /**** webpack.config.js  ***/
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const webpack = require('webpack')
 // webpack 默认配置
 const path = require('path');
 
 module.exports = {
+    // devServer和entry是平级的
+    devServer: {
+        // 指向打包后的文件地址
+        // contentBase: path.join(__dirname, 'dist'),
+        contentBase: './dist',
+        inline: true,
+        // compress: true,
+        // // 是否自动打开一个新窗口
+        open: true,
+        // // 端口号
+        port: 3000,
+        // // 是否开启热更新
+        hot: true,
+        // // 启用热模块替换，而不会在构建失败时将页面刷新作为后备。
+        // hotOnly: true
+    },
     // 项目入口文件 支持 str | [] | {}
     entry: path.resolve(__dirname, './src/index.js'),
     // 项目出口 
@@ -66,7 +83,9 @@ module.exports = {
                 collapseWhitespace: true, // 删除空⽩符与换⾏符
                 minifyCSS: true // 压缩内联css
             }
-        })
+        }),
+        // 启用模块热替换(HMR - Hot Module Replacement)
+        // new webpack.HotModuleReplacementPlugin(),
     ],
     // 是否开启 source-map(打包真实数据)
     // devtool: 'source-map'
